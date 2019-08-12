@@ -20,6 +20,7 @@ SPACESHIP_GIT_STATUS_UNMERGED="${SPACESHIP_GIT_STATUS_UNMERGED="="}"
 SPACESHIP_GIT_STATUS_AHEAD="${SPACESHIP_GIT_STATUS_AHEAD="⇡"}"
 SPACESHIP_GIT_STATUS_BEHIND="${SPACESHIP_GIT_STATUS_BEHIND="⇣"}"
 SPACESHIP_GIT_STATUS_DIVERGED="${SPACESHIP_GIT_STATUS_DIVERGED="⇕"}"
+SPACESHIP_GIT_STATUS_BUNTRACKED="${SPACESHIP_GIT_STATUS_BUNTRACKED="⌦"}"
 
 # ------------------------------------------------------------------------------
 # Section
@@ -108,7 +109,7 @@ spaceship_git_status() {
 
   # Check whether branch is tracked
   if [ $(echo "$INDEX" | command grep -c '^## .*\.\.\.') = 0 ]; then
-    git_status="$git_status⌦"
+    git_status="$git_status$SPACESHIP_GIT_STATUS_BUNTRACKED"
   fi
 
   if [[ -n $git_status ]]; then
