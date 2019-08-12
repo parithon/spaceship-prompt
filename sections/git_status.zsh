@@ -106,6 +106,11 @@ spaceship_git_status() {
     [[ "$is_behind" == true ]] && git_status="$SPACESHIP_GIT_STATUS_BEHIND$git_status"
   fi
 
+  # Check whether branch is tracked
+  if [ $(echo "$INDEX" | command grep -c '^## \w*\.\.\.') = 0 ]; then
+    git_status="$git_status⌦"
+  fi
+
   if [[ -n $git_status ]]; then
     # Status prefixes are colorized
     spaceship::section \
