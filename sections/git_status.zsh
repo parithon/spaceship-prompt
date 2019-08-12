@@ -107,7 +107,7 @@ spaceship_git_status() {
   fi
 
   # Check whether branch is tracked
-  if [ $(echo "$INDEX" | command grep -c '^## \w*\.\.\.') = 0 ]; then
+  if [ $(echo "$INDEX" | command grep -c '^## .*\.\.\.') = 0 ]; then
     git_status="$git_status⌦"
   fi
 
